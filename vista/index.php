@@ -121,28 +121,19 @@
                                         <span>Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="nav-parent" id="menu_personal">
+                                <li class="nav-parent" id="menu_personal" style="display: none;">
                                     <a href="#">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                         <span>Personal</span>
                                     </a>
                                     <ul class="nav nav-children">
-                                        <li class="nav-parent" id="menu_personal_tablas">
+                                        <li class="nav-parent">
                                             <a href="#">
                                                 <i class="fa fa-columns" ></i>
                                                 <span>Administración tablas</span>
                                             </a>
-                                            <ul class="nav nav-children" >
-                                                <li id="menu_personal_empleados">
-                                                    <a href="#">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Empleados
-                                                    </a>
-                                                </li>
-                                                <li id="menu_personal_administradores">
-                                                    <a href="#">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Administradores
-                                                    </a>
-                                                </li>
+                                            <ul class="nav nav-children" id="menu_personal_tablas" style="display: none;">
+                                                
                                             </ul>
                                         </li>
                                         <li>
@@ -159,38 +150,77 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="nav-parent" id="menu_comercializacion">
+                                <li class="nav-parent" id="menu_comercializacion" style="display: none;">
                                     <a href="#">
-                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         <span>Comercialización</span>
                                     </a>
                                     <ul class="nav nav-children">
-                                        <li class="nav-parent" id="menu_comercializacion_tablas">
+                                        <li class="nav-parent">
                                             <a href="#">
                                                 <i class="fa fa-columns" ></i>
                                                 <span>Administración tablas</span>
                                             </a>
-                                            <ul class="nav nav-children">
-                                                <li id="menu_comercializacion_productos">
-                                                    <a href="#">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Productos
-                                                    </a>
-                                                </li>
-                                                <li id="menu_comercializacion_categorias">
-                                                    <a href="#">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Categorías
-                                                    </a>
-                                                </li>
-                                                <li id="menu_comercializacion_marcas">
-                                                    <a href="#">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Marcas
-                                                    </a>
-                                                </li>
-                                                <li id="menu_comercializacion_ventas" style="display: none;">
-                                                    <a href="#">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ventas
-                                                    </a>
-                                                </li>
+                                            <ul class="nav nav-children" id="menu_comercializacion_tablas" style="display: none;">
+                                                
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-gears"></i>
+                                                Procesos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-file-pdf-o"></i>
+                                                Reportes
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-parent" id="menu_finanzas" style="display: none;">
+                                    <a href="#">
+                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                        <span>Finanzas</span>
+                                    </a>
+                                    <ul class="nav nav-children">
+                                        <li class="nav-parent">
+                                            <a href="#">
+                                                <i class="fa fa-columns" ></i>
+                                                <span>Administración tablas</span>
+                                            </a>
+                                            <ul class="nav nav-children" id="menu_finanzas_tablas" style="display: none;">
+                                                
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-gears"></i>
+                                                Procesos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-file-pdf-o"></i>
+                                                Reportes
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-parent" id="menu_seguridad" style="display: none;">
+                                    <a href="#">
+                                        <i class="fa fa-laptop" aria-hidden="true"></i>
+                                        <span>Seguridad</span>
+                                    </a>
+                                    <ul class="nav nav-children">
+                                        <li class="nav-parent">
+                                            <a href="#">
+                                                <i class="fa fa-columns" ></i>
+                                                <span>Administración tablas</span>
+                                            </a>
+                                            <ul class="nav nav-children" id="menu_seguridad_tablas" style="display: none;">
+                                                
                                             </ul>
                                         </li>
                                         <li>
@@ -208,130 +238,6 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <!--<ul class="nav nav-main">
-                                <li class="nav-active">
-                                    <a href="#">
-                                        <i class="fa fa-home" aria-hidden="true"></i>
-                                        <span>Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="nav-parent">
-                                    <a href="#">
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span>Personal</span>
-                                    </a>
-                                    <ul class="nav nav-children">
-                                        <li class="nav-parent">
-                                            <a href="#">
-                                                <i class="fa fa-columns" ></i>
-                                                <span>Administración tablas</span>
-                                            </a>
-                                            <ul class="nav nav-children">
-                                                <li>
-                                                    <a href="#" onclick="CargarContenido('contenido_principal','personas/vista_personas_listar.php')">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personas
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-gears"></i>
-                                                Procesos
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-file-pdf-o"></i>
-                                                Reportes
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-parent">
-                                    <a>
-                                        <i class="fa fa-copy" aria-hidden="true"></i>
-                                        <span>Pages</span>
-                                    </a>
-                                    <ul class="nav nav-children">
-                                        <li>
-                                            <a href="pages-signup.html">
-                                                Sign Up
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-signin.html">
-                                                Sign In
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-recover-password.html">
-                                                Recover Password
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-lock-screen.html">
-                                                Locked Screen
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-user-profile.html">
-                                                User Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-session-timeout.html">
-                                                Session Timeout
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-calendar.html">
-                                                Calendar
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-timeline.html">
-                                                Timeline
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-media-gallery.html">
-                                                Media Gallery
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-invoice.html">
-                                                Invoice
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-blank.html">
-                                                Blank Page
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-404.html">
-                                                404
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-500.html">
-                                                500
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-log-viewer.html">
-                                                Log Viewer
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="pages-search-results.html">
-                                                Search Results
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>-->
                         </nav>
                     </div>
                 </div>
@@ -442,6 +348,8 @@
         </aside>
     </section>
 
+    <script src="../js/menu/menu.js"></script>
+
     <!-- Vendor -->
     <script src="../Plantilla/octopus/octopus/assets/vendor/jquery/jquery.js"></script>
     <script src="../Plantilla/octopus/octopus/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
@@ -490,6 +398,10 @@
     <script src="../Plantilla/octopus/octopus/assets/javascripts/dashboard/examples.dashboard.js"></script>
 
     <script>
+        $(document).ready(function() {
+            let codigo_perfil = <?php echo $_SESSION['sesion_codigo_perfil'] ?>;
+            Menus(codigo_perfil);
+        });
         function CargarContenido(contenedor,contenido)
         {
             $("#"+contenedor).load(contenido);

@@ -35,36 +35,38 @@ function VerificarUsuario()
                     id: datos.CODIGO_USUARIO,
                     perfil: datos.NOMBRE_PERFIL,
                     correo: datos.CORREO_USUARIO,
-                    nombres: datos.USUARIO
+                    nombres: datos.USUARIO,
+                    codigo_perfil: datos.CODIGO_PERFIL
                 }
-            }).done(function(resp){
-                let timerInterval
-                Swal.fire({
-                title: 'Bienvenido al sistema',
-                html: 'Ingresando',
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                    timerInterval = setInterval(() => {
-                    const content = Swal.getContent()
-                    if (content) {
-                        const b = content.querySelector('b')
-                        if (b) {
-                        b.textContent = Swal.getTimerLeft()
+            }).done(function(resp)
+                {
+                    let timerInterval
+                    Swal.fire({
+                    title: 'Bienvenido al sistema',
+                    html: 'Ingresando',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                        const content = Swal.getContent()
+                        if (content) {
+                            const b = content.querySelector('b')
+                            if (b) {
+                            b.textContent = Swal.getTimerLeft()
+                            }
                         }
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
                     }
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-                }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    location.reload();
-                }
+                    }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        location.reload();
+                    }
+                    })
                 })
-            })
         }
     })
 }

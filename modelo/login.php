@@ -32,7 +32,8 @@ class Login
 
     function VerificarUsuarioPerfil($correo_usuario, $contraseña_usuario)
     {
-        $sql = $this->conexion->conexion->query("SELECT xeusu_usuari.CODIGO_USUARIO,xeprf_perfil.NOMBRE_PERFIL, xeusu_usuari.CORREO_USUARIO, xeusu_usuari.CONTRASENA_USUARIO,xepru_prfusu.ESTADO,
+        $sql = $this->conexion->conexion->query("SELECT xeusu_usuari.CODIGO_USUARIO,xeprf_perfil.NOMBRE_PERFIL, 
+        xeprf_perfil.CODIGO_PERFIL, xeusu_usuari.CORREO_USUARIO, xeusu_usuari.CONTRASENA_USUARIO,xepru_prfusu.ESTADO,
         concat_ws(' ',xeusu_usuari.NOMBRES_USUARIO,xeusu_usuari.APELLIDOS_USUARIO) AS USUARIO
                 FROM xepru_prfusu
                 INNER JOIN xeprf_perfil ON xeprf_perfil.CODIGO_PERFIL = xepru_prfusu.CODIGO_PERFIL
