@@ -1,6 +1,5 @@
 function Menus (codigo_perfil)
 {
-    //alert(codigo_perfil);
     $.ajax({
         url: '../controlador/menu/menu.php',
         type: 'POST',
@@ -9,7 +8,7 @@ function Menus (codigo_perfil)
         }
     }).done(function(resp){
         var datos = JSON.parse(resp);
-        console.log(datos);
+        //console.log(datos);
         let menu_personal = "";
         let menu_personal_padre = document.getElementById("menu_personal");
         let menu_comercializacion = "";
@@ -25,13 +24,26 @@ function Menus (codigo_perfil)
             if(datos[i].SISTEMA === 'Personal')
             {
                 menu_personal_padre.style.display = "inline";
-                menu_personal += "<li><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+datos[i].SUBSISTEMA+"</a></li>";
+
+                menu_personal += `
+                    <li>
+                        <a href="#" onclick="CargarContenido('contenido_principal','personal/${datos[i].SUBSISTEMA}.php')">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${datos[i].SUBSISTEMA}
+                        </a>
+                    </li>
+                `;
             }
             $("#menu_personal_tablas").html(menu_personal);
             if(datos[i].SISTEMA === 'Comercialización')
             {
                 menu_comercializacion_padre.style.display = "inline";
-                menu_comercializacion += "<li><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+datos[i].SUBSISTEMA+"</a></li>";
+                menu_comercializacion += `
+                    <li>
+                        <a href="#" onclick="CargarContenido('contenido_principal','personal/${datos[i].SUBSISTEMA}.php')">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${datos[i].SUBSISTEMA}
+                        </a>
+                    </li>
+                `;
             }
             $("#menu_comercializacion_tablas").html(menu_comercializacion);
             if(datos[i].SISTEMA === 'Finanzas')
@@ -43,19 +55,15 @@ function Menus (codigo_perfil)
             if(datos[i].SISTEMA === 'Seguridad')
             {
                 menu_seguridad_padre.style.display = "inline";
-                menu_seguridad += "<li><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+datos[i].SUBSISTEMA+"</a></li>";
+                menu_seguridad += `
+                    <li>
+                        <a href="#" onclick="CargarContenido('contenido_principal','seguridad/${datos[i].SUBSISTEMA}.php')">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${datos[i].SUBSISTEMA}
+                        </a>
+                    </li>
+                `;
             }
             $("#menu_seguridad_tablas").html(menu_seguridad);
         }
-        
-        /**if(datos[0].SISTEMA === 'Personal')
-        {
-            menu_personal_padre.style.display = "inline";
-        }
-
-        if(datos[0].SISTEMA == 'Comercialización')
-        {
-            menu_comercializacion_padre.style.display = "inline";
-        }**/
     })
 }

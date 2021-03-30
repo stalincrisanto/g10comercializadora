@@ -16,7 +16,7 @@ class Menu
                 FROM xerpf_rolprf
                 INNER JOIN xesis_sistem ON xesis_sistem.CODIGO_SISTEMA = xerpf_rolprf.CODIGO_SISTEMA
                 INNER JOIN xerol_rol ON xerol_rol.CODIGO_ROL = xerpf_rolprf.CODIGO_ROL
-                WHERE xerpf_rolprf.CODIGO_PERFIL = '" . $codigo_perfil . "' ");
+                WHERE xerpf_rolprf.CODIGO_PERFIL = '" . $codigo_perfil . "' ORDER BY SUBSISTEMA ");
         $arreglo = array();
         if ($sql->num_rows > 0) 
         {

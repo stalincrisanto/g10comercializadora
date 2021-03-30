@@ -34,7 +34,7 @@ class Login
     {
         $sql = $this->conexion->conexion->query("SELECT xeusu_usuari.CODIGO_USUARIO,xeprf_perfil.NOMBRE_PERFIL, 
         xeprf_perfil.CODIGO_PERFIL, xeusu_usuari.CORREO_USUARIO, xeusu_usuari.CONTRASENA_USUARIO,xepru_prfusu.ESTADO,
-        concat_ws(' ',xeusu_usuari.NOMBRES_USUARIO,xeusu_usuari.APELLIDOS_USUARIO) AS USUARIO
+        concat_ws(' ',xeusu_usuari.NOMBRES_USUARIO,xeusu_usuari.APELLIDOS_USUARIO) AS USUARIO,xeusu_usuari.ACCESO_PRIMERA_VEZ
                 FROM xepru_prfusu
                 INNER JOIN xeprf_perfil ON xeprf_perfil.CODIGO_PERFIL = xepru_prfusu.CODIGO_PERFIL
                 INNER JOIN xeusu_usuari ON xeusu_usuari.CODIGO_USUARIO = xepru_prfusu.CODIGO_USUARIO
@@ -53,6 +53,20 @@ class Login
         else if($sql->num_rows == 0)
         {
             return $arreglo;
+        }
+    }
+
+    function CambiarContraseñaPrimeraVez($id_usuario,$contraseña_usuario_nueva)
+    {
+        $sql = "UPDATE xeusu_usuari SET CONTRASENA_USUARIO='".$contraseña_usuario_nueva."',ACCESO_PRIMERA_VEZ='no' WHERE CODIGO_USUARIO='".$id_usuario."'";
+        
+        if ($this->conexion->conexion->query($sql) === TRUE) 
+        {
+            return 1;
+        } 
+        else 
+        {
+            return 0;
         }
     }
 

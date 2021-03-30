@@ -1,10 +1,9 @@
 <?php
 
-	session_start();
-	if(!isset($_SESSION['sesion_correo_usuario']))
-	{
-		header('Location: ../login/index.php');
-	}
+session_start();
+if (!isset($_SESSION['sesion_correo_usuario'])) {
+    header('Location: ../login/index.php');
+}
 
 ?>
 
@@ -21,6 +20,9 @@
     <meta name="keywords" content="HTML5 Admin Template" />
     <meta name="description" content="JSOFT Admin - Responsive HTML5 Template">
     <meta name="author" content="JSOFT.net">
+
+    <link rel="stylesheet" href="../Plantilla/octopus/octopus/assets/DataTables/datatables.min.css">
+    <link rel="stylesheet" href="../Plantilla/octopus/octopus/assets/select2/select2.min.css">
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -50,6 +52,7 @@
 
     <!-- Head Libs -->
     <script src="../Plantilla/octopus/octopus/assets/vendor/modernizr/modernizr.js"></script>
+
 
 </head>
 
@@ -85,7 +88,7 @@
                         <ul class="list-unstyled">
                             <li class="divider"></li>
                             <li>
-                                <a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i class="fa fa-user"></i> My Profile</a>
+                                <a role="menuitem" tabindex="-1" href="#" onclick="CambiarContraseña();"><i class="fa fa-lock"></i> Cambiar contraseña</a>
                             </li>
                             <li>
                                 <a role="menuitem" tabindex="-1" href="../controlador/logout.php"><i class="fa fa-power-off"></i> Logout</a>
@@ -116,7 +119,7 @@
                         <nav id="menu" class="nav-main" role="navigation">
                             <ul class="nav nav-main" id="menu_principal">
                                 <li class="nav-active">
-                                    <a href="#">
+                                    <a href="#" onclick="CargarContenido('contenido_principal','principal/vista_principal.php')">
                                         <i class="fa fa-home" aria-hidden="true"></i>
                                         <span>Dashboard</span>
                                     </a>
@@ -129,11 +132,11 @@
                                     <ul class="nav nav-children">
                                         <li class="nav-parent">
                                             <a href="#">
-                                                <i class="fa fa-columns" ></i>
+                                                <i class="fa fa-columns"></i>
                                                 <span>Administración tablas</span>
                                             </a>
                                             <ul class="nav nav-children" id="menu_personal_tablas" style="display: none;">
-                                                
+
                                             </ul>
                                         </li>
                                         <li>
@@ -158,11 +161,11 @@
                                     <ul class="nav nav-children">
                                         <li class="nav-parent">
                                             <a href="#">
-                                                <i class="fa fa-columns" ></i>
+                                                <i class="fa fa-columns"></i>
                                                 <span>Administración tablas</span>
                                             </a>
                                             <ul class="nav nav-children" id="menu_comercializacion_tablas" style="display: none;">
-                                                
+
                                             </ul>
                                         </li>
                                         <li>
@@ -187,11 +190,11 @@
                                     <ul class="nav nav-children">
                                         <li class="nav-parent">
                                             <a href="#">
-                                                <i class="fa fa-columns" ></i>
+                                                <i class="fa fa-columns"></i>
                                                 <span>Administración tablas</span>
                                             </a>
                                             <ul class="nav nav-children" id="menu_finanzas_tablas" style="display: none;">
-                                                
+
                                             </ul>
                                         </li>
                                         <li>
@@ -216,11 +219,11 @@
                                     <ul class="nav nav-children">
                                         <li class="nav-parent">
                                             <a href="#">
-                                                <i class="fa fa-columns" ></i>
+                                                <i class="fa fa-columns"></i>
                                                 <span>Administración tablas</span>
                                             </a>
                                             <ul class="nav nav-children" id="menu_seguridad_tablas" style="display: none;">
-                                                
+
                                             </ul>
                                         </li>
                                         <li>
@@ -347,8 +350,46 @@
             </div>
         </aside>
     </section>
+    
+    <form autocomplete="FALSE" onsubmit="return false" action="">
+        <div class="modal fade" id="modal_editar_contraseña" role="dialog">
+            <div class="modal-block modal-header-color modal-block-info">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #5bc0de;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="color: white;"><b>Modificar Contraseña</b></h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="id_usuario" value="<?php echo $_SESSION['sesion_id_usuario'] ?>">
+                        <div class="col-lg-12">
+                            <input type="hidden" id="txtcontra_bd">
+                            <label for="">Contraseña Actual</label>
+                            <input type="password" class="form-control" id="contraseña_actual" placeholder="Ingrese su contraseña actual">
+                            <br>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="">Nueva Contraseña</label>
+                            <input type="password" class="form-control" id="contraseña_nueva" placeholder="Ingrese la nueva contraseña">
+                            <br>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="">Repetir Contraseña</label>
+                            <input type="password" class="form-control" id="contreseña_nueva_repetir" placeholder="Repita la nueva contraseña">
+                            <br>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" onclick="EditarContraseña();"><i class="fa fa-check"></i>&nbsp;Registrar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp;Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
-    <script src="../js/menu/menu.js"></script>
+    <script src="../js/menu/menu.js?newversion"></script>
+    <script src="../js/personal/empleados.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Vendor -->
     <script src="../Plantilla/octopus/octopus/assets/vendor/jquery/jquery.js"></script>
@@ -386,6 +427,9 @@
     <script src="../Plantilla/octopus/octopus/assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
     <script src="../Plantilla/octopus/octopus/assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
 
+    <script src="../Plantilla/octopus/octopus/assets/DataTables/datatables.min.js"></script>
+    <script src="../Plantilla/octopus/octopus/assets/select2/select2.min.js"></script>
+
     <!-- Theme Base, Components and Settings -->
     <script src="../Plantilla/octopus/octopus/assets/javascripts/theme.js"></script>
 
@@ -397,14 +441,45 @@
     <!-- Examples -->
     <script src="../Plantilla/octopus/octopus/assets/javascripts/dashboard/examples.dashboard.js"></script>
 
+
+
+
     <script>
+        var idioma_espanol = {
+            select: {
+                rows: "%d fila seleccionada"
+            },
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ning&uacute;n dato disponible en esta tabla",
+            "sInfo": "Registros del (_START_ al _END_) total de _TOTAL_ registros",
+            "sInfoEmpty": "Registros del (0 al 0) total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "<b>No se encontraron datos</b>",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+
         $(document).ready(function() {
             let codigo_perfil = <?php echo $_SESSION['sesion_codigo_perfil'] ?>;
             Menus(codigo_perfil);
         });
-        function CargarContenido(contenedor,contenido)
-        {
-            $("#"+contenedor).load(contenido);
+
+        function CargarContenido(contenedor, contenido) {
+            $("#" + contenedor).load(contenido);
         }
     </script>
 

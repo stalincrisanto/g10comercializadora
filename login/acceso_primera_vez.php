@@ -1,10 +1,10 @@
 <?php
 
 	session_start();
-	if(isset($_SESSION['sesion_correo_usuario']))
+	/**if(isset($_SESSION['sesion_correo_usuario']))
 	{
 		header('Location: ../vista/index.php');
-	}
+	}**/
 
 ?>
 
@@ -54,14 +54,16 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Iniciar Sesión</h2>
+						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i>Acceso por primera vez al sistema</h2>
 					</div>
 					<div class="panel-body">
-						<form autocomplete="FALSE" onsubmit="return false" action="">
+                        <h4 style="text-align: center;"><?php echo $_SESSION['sesion_nombres_usuario'] ?> debe cambiar la contraseña</h4><br>
+						<input type="hidden" id="id_usuario" value="<?php echo $_SESSION['sesion_id_usuario'] ?>">
+                        <form autocomplete="FALSE" onsubmit="return false" action="">
 							<div class="form-group mb-lg">
 								<label>Correo Electrónico</label>
 								<div class="input-group input-group-icon">
-									<input name="correo_usuario" id="correo_usuario" type="mail" placeholder="Ingrese su correo electrónico" class="form-control input-lg" />
+									<input name="correo_usuario" id="correo_usuario" type="mail" value="<?php echo $_SESSION['sesion_correo_usuario'] ?>" disabled=true class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-user"></i>
@@ -72,10 +74,24 @@
 
 							<div class="form-group mb-lg">
 								<div class="clearfix">
-									<label class="pull-left">Contraseña</label>
+									<label class="pull-left">Contraseña Nueva</label>
 								</div>
 								<div class="input-group input-group-icon">
-									<input id="contraseña_usuario" name="contraseña_usuario" type="password" placeholder="Ingrese su contraseña" class="form-control input-lg" />
+									<input id="contraseña_usuario_nueva" name="contraseña_usuario_nueva" type="password" placeholder="Ingrese su contraseña" class="form-control input-lg" />
+									<span class="input-group-addon">
+										<span class="icon icon-lg">
+											<i class="fa fa-lock"></i>
+										</span>
+									</span>
+								</div>
+							</div>
+
+                            <div class="form-group mb-lg">
+								<div class="clearfix">
+									<label class="pull-left">Repetir contraseña</label>
+								</div>
+								<div class="input-group input-group-icon">
+									<input id="contraseña_usuario_repetir" name="contraseña_usuario_repetir" type="password" placeholder="Ingrese su contraseña" class="form-control input-lg" />
 									<span class="input-group-addon">
 										<span class="icon icon-lg">
 											<i class="fa fa-lock"></i>
@@ -89,7 +105,7 @@
 							</span>
 
 							<div class="mb-xs text-center">
-								<button class="btn btn-facebook mb-md ml-xs mr-xs" onclick="VerificarUsuario();"><i class="fa fa-check"></i>&nbsp;Ingresar</button>
+								<button class="btn btn-facebook mb-md ml-xs mr-xs" onclick="AccesoPrimeraVez();"><i class="fa fa-check"></i>&nbsp;Cambiar contraseña</button>
 								<!--<a class="btn btn-facebook mb-md ml-xs mr-xs">Ingresar <i class="fa fa-check"></i></a>-->
 							</div>
 						</form>
